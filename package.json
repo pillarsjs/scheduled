@@ -1,0 +1,57 @@
+{
+  "name": "scheduled",
+  "description": "Scheduled job manager for JavaScript, linux cron pattern.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Javier Gallego Martín",
+    "email": "bifuer@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Chelo Quilón Gomez",
+      "email": "cheloq@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/bifuer/scheduled",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bifuer/scheduled"
+  },
+  "bugs": {
+    "url": "https://github.com/bifuer/scheduled/issues",
+    "email" : "cheloq@gmail.com"
+  },
+  "keywords": [
+    "scheduled",
+    "schedule",
+    "cron",
+    "cron job",
+    "timer",
+    "timers",
+    "cron pattern",
+    "node",
+    "js",
+    "javascript"
+  ],
+  "dependencies": {
+  	"crier": "*",
+    "objectarray": "*",
+    "date.format": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "unit.js": "*"
+  },
+  "main": "./index.js",
+  "scripts":{
+    "test": "mocha test/"
+  },
+  "preferGlobal": false,
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ],
+  "readmeFilename": "README.md",
+  "license": "MIT"
+}
