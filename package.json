@@ -34,9 +34,10 @@
     "javascript"
   ],
   "dependencies": {
-  	"crier": "*",
+    "crier": "*",
     "objectarray": "*",
-    "date.format": "*"
+    "date.format": "*",
+    "textualization": "*"
   },
   "devDependencies": {
     "mocha": "*",
