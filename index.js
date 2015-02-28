@@ -6,7 +6,7 @@ var ObjectArray = require('objectarray');
 var i18n = require('textualization');
 require('date.format');
 
-i18n.load('scheduled',__dirname+'/languages/',function(){});
+i18n.load('scheduled',__dirname+'/languages/');
 
 module.exports = Scheduled;
 Scheduled.jobs = new ObjectArray();
