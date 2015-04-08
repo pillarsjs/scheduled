@@ -10,6 +10,12 @@ i18n.load('scheduled',__dirname+'/languages/');
 
 module.exports = Scheduled;
 Scheduled.jobs = new ObjectArray();
+Scheduled.close = function(){
+  for(var i=0,l=Scheduled.jobs.length;i<l;i++){
+    Scheduled.jobs[i].stop();
+  }
+  crier.info('close');
+};
 function Scheduled(config){
   var scheduled = this;
 
@@ -38,6 +44,9 @@ function Scheduled(config){
   scheduled.configure(config);
   Scheduled.jobs.insert(this);
   crier.info('new',{job:this});
+  if(scheduled.autoStart){
+    scheduled.start();
+  }
 }
   Scheduled.prototype.configure = function configure(config){
     for(var i=0,k=Object.keys(config),l=k.length;i<l;i++){
@@ -49,26 +58,28 @@ function Scheduled(config){
     if(!this.cursor){
       var error = new Error("Scheduled without pattern");
       crier.info('error',{job:this,error:error});
-      return error;
+    } else {
+      this.stop();
+      try {
+        var now = new Date();
+        var lapse = this.cursor.lapse(now);
+        this.next = new Date(now.getTime()+lapse);
+        this.timer = setTimeout(this.launch.bind(this),lapse);
+        crier.info('start',{job:this});
+      } catch(error){
+        crier.info('error',{job:this,error:error});
+      }
     }
-    this.stop();
-    try {
-      var now = new Date();
-      var lapse = this.cursor.lapse(now);
-      this.next = new Date(now.getTime()+lapse);
-      this.timer = setTimeout(this.launch,lapse);
-      crier.info('start',{job:this});
-      return true;
-    } catch(error){
-      crier.info('error',{job:this,error:error});
-      return error;
-    }
+    return this;
   };
   Scheduled.prototype.stop = function(){
-    clearTimeout(this.timer);
     this.next = undefined;
-    this.timer = undefined;
-    crier.info('stop',{job:this});
+    if(this.timer){
+      clearTimeout(this.timer);
+      this.timer = undefined;
+      crier.info('stop',{job:this});
+    }
+    return this;
   };
   Scheduled.prototype.launch = function(){
     var result;
