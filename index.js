@@ -1,6 +1,12 @@
 /* jslint node: true */
 "use strict";
 
+global.modulesCache = global.modulesCache || {};
+if(global.modulesCache['scheduled']){
+  module.exports = global.modulesCache['scheduled'];
+  return;
+}
+
 var crier = require('crier').addGroup('scheduled');
 var ObjectArray = require('objectarray');
 var i18n = require('textualization');
@@ -8,7 +14,7 @@ require('date.format');
 
 i18n.load('scheduled',__dirname+'/languages/');
 
-module.exports = Scheduled;
+module.exports = global.modulesCache['scheduled'] = Scheduled;
 Scheduled.jobs = new ObjectArray();
 Scheduled.close = function(){
   for(var i=0,l=Scheduled.jobs.length;i<l;i++){
