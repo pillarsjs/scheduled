@@ -60,30 +60,36 @@ function Scheduled(config){
     }
     return this;
   };
-  Scheduled.prototype.start = function(){
+  Scheduled.prototype.start = function(restart){
     if(!this.cursor){
       var error = new Error("Scheduled without pattern");
       crier.info('error',{job:this,error:error});
     } else {
-      this.stop();
+      this.stop(restart);
       try {
         var now = new Date();
         var lapse = this.cursor.lapse(now);
         this.next = new Date(now.getTime()+lapse);
         this.timer = setTimeout(this.launch.bind(this),lapse);
-        crier.info('start',{job:this});
+        if(!restart){
+          crier.info('start',{job:this});
+        } else {
+          crier.info('restart',{job:this});
+        }
       } catch(error){
         crier.info('error',{job:this,error:error});
       }
     }
     return this;
   };
-  Scheduled.prototype.stop = function(){
+  Scheduled.prototype.stop = function(restart){
     this.next = undefined;
     if(this.timer){
       clearTimeout(this.timer);
       this.timer = undefined;
-      crier.info('stop',{job:this});
+      if(!restart){
+        crier.info('stop',{job:this});
+      }
     }
     return this;
   };
@@ -97,7 +103,7 @@ function Scheduled(config){
       result = error;
     }
     this.last = this.next;
-    this.start();
+    this.start(true);
     return result;
   };
   Scheduled.prototype.clear = function(){
