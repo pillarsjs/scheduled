@@ -1,4 +1,4 @@
-textualization = {
+({
   'error': "Scheduled job error: ".red+", id> '{job.id}', pattern> '{job.pattern}' ".yellow,
   'new': "New scheduled job: ".green+", id> '{job.id}', pattern> '{job.pattern}' ".yellow,
   'start': "Scheduled job start: ".cyan+", id> '{job.id}', pattern> '{job.pattern}', next execution> {job.next}".yellow,
@@ -7,4 +7,4 @@ textualization = {
   'launch': "Scheduled job launch: ".green+", id> '{job.id}', pattern> '{job.pattern}'".yellow,
   'clear': "Scheduled job removed: ".cyan+", id> '{job.id}', pattern> '{job.pattern}'".yellow,
   'close': "All scheduled jobs stoped".cyan
-};
+})
