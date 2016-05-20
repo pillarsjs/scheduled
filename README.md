@@ -39,7 +39,7 @@ var myJob = new Scheduled({
 Propiedad estática.
 Es de tipo *ObjectArray*, contiene todas las tareas que se han programado.  Cada vez que se crea un nueva tarea programada se inserta en Scheduled.jobs.
 
-Al ser de tipo ObjectArray permite capturar mediante identificador una tarea y manipularla, entre muchas otras funcionalidades. [Ver ObjectArray](https://github.com/bifuer/ObjectArray).
+Al ser de tipo ObjectArray permite capturar mediante identificador una tarea y manipularla, entre muchas otras funcionalidades. [Ver ObjectArray](https://github.com/pillarsjs/ObjectArray).
 
 ###myJob.last
 Última vez que se ejecutó la tarea. En caso de aún no haberse ejecutado, devolverá *undefined*.

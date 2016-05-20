@@ -12,13 +12,13 @@
       "email": "cheloq@gmail.com"
     }
   ],
-  "homepage": "https://github.com/bifuer/scheduled",
+  "homepage": "https://github.com/pillarsjs/scheduled",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bifuer/scheduled"
+    "url": "git://github.com/pillarsjs/scheduled"
   },
   "bugs": {
-    "url": "https://github.com/bifuer/scheduled/issues",
+    "url": "https://github.com/pillarsjs/scheduled/issues",
     "email" : "cheloq@gmail.com"
   },
   "keywords": [
