@@ -23,6 +23,7 @@ Scheduled.close = function(){
   crier.info('close');
 };
 function Scheduled(config){
+  if(!(this instanceof Scheduled)){return new Scheduled(config);}
   var scheduled = this;
 
   scheduled.id = (new Date()).format('{YYYY}{MM}{DD}{hh}{mm}{ss}{mss}',true)+Math.round(Math.random()*1000000000000000).toString(36);
