@@ -1,5 +1,17 @@
 # Scheduled
 
+## For reasons of time and advancement in technologies, especially JS, this project is no longer maintained.
+### Thank you for your support and interest in this project.
+
+We personally think this is a good example of simplifying JS code in Node for these purposes and hopefully we'll have enough time to come back to this idea or something similar.
+
+This project has favored great relationships and has provided a lot of learning for its participants
+
+See you later! <3
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+---
+
 Esta librería permite programar tareas a ejecutar mediante un patrón de tiempo. Dispone de control de estado, conociendo en todo momento todas las tareas que se han programado en la propiedad *Scheduled.jobs* y pudiendo por lo tanto, realizar acciones sobre éstas.
 
 Para crear una tarea se instancia un objeto de tipo Scheduled: 
